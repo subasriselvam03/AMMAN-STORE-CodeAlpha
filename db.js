@@ -1,15 +1,16 @@
 const mysql = require("mysql2");
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Subasri@2006",
-    database: "amman_store"
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT
 });
 
 connection.connect(function(err) {
     if (err) {
-        console.log("Connection Failed");
+        console.log("Connection Failed:", err);
     } else {
         console.log("MySQL Connected Successfully");
     }
